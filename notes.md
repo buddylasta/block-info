@@ -10,3 +10,5 @@
 - style get mempool stats (turn into table and histogram?)
 - style get fee estimates (turn into table with for loop)
 - style code tag
+- make block height input required
+- create icons in footer
