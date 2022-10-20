@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h2>Height of Last Block</h2> 
+        <p>Returns the height of the last block</p>
+
+        <button id="lastHeightBtn" onclick="getLastBlockHeight()">Get Last Block Height</button>
+
+        <p class="block" id="lastHeightOut"></p>
+        <hr>
+
+        <h2>Last Block Info</h2> 
+        <p>Returns information about the last block mined</p>
+
+        <p> Available fields: id, height, version, timestamp, mediantime, bits, nonce, merkle_root, tx_count, size, weight, and previousblockhash</p>
+
+        <button id="lastBlockInfo" onclick="getBlockInfo(true)">Get Last Block Info</button>
+
+        <p id="lastBlockOutput"></p>
+        <hr>
+
+        <h2>Specific Block Info</h2>
+        <p>Returns information about a specific block mined</p>
+
+        <p> Available fields: id, height, version, timestamp, mediantime, bits, nonce, merkle_root, tx_count, size, weight, and previousblockhash</p>
+        <label for="blockHeight">Block Height:</label>
+        <input type="text" id="blockHeight" placeholder="Block Height" maxlength="7">
+
+        <button id="heightBtn" onclick="getBlockInfo(false)">Get Block Info</button>
+
+        <p id="specificBlockOutput"></p>
+        <hr>
+
+
+        <h2>Mempool Stats</h2> 
+        <p>Get mempool backlog statistics. Returns an object with:</p>
+
+        <ul>
+            <li>count: The number of transactions in the mempool</li>
+            <li>vsize: the total size of mempool transactions in virtual bytes</li>
+            <li>total_fee: the total fee paid by mempool transactions in satoshis</li>
+            <li>fee_histogram: mempool fee-rate distribution histogram</li>
+        </ul>
+
+        <p hidden>
+            An array of (feerate, vsize) tuples, where each entry's vsize is the total
+            vsize of transactions paying more than feerate but less than the previous entry's 
+            feerate (except for the first entry, which has no upper bound). This matches the 
+            format used by the Electrum RPC protocol for mempool.get_fee_histogram.
+        </p>
+
+
+        <button id="mempoolStats" onclick="getMempoolStats()">Get Mempool Stats</button>
+
+        <p id="mempoolOutput"></p>
+        <hr>
+
+        <h2>Fee Estimates</h2> 
+        <p>
+            Get an object where the key is the confirmation target (in number of blocks) 
+            and the value is the estimated feerate (in sat/vB).
+        </p>
+
+        <p>The available confirmation targets are 1-25, 144, 504 and 1008 blocks.</p>
+
+        <p>
+            For example: 
+            <code>{ "1": 87.882, "2": 87.882, "3": 87.882, "4": 87.882, "5": 81.129, "6": 68.285, ..., "144": 1.027, "504": 1.027, "1008": 1.027 }</code>
+        </p>
+        <button id="feeEstimates" onclick="getFeeEstimates()">Get Fee Estimates</button>
+
+        <p id="feeEstimateOutput"></p>
+        <hr>
+
+        <h2> Clear Results </h2>
+        <button id="clear" onclick="clearResults()">Clear</button> 
+        <hr>
+
+
+        <!-- Placing scripts at the bottom of the <body> element improves the display speed, because 
+            script interpretation slows down the display.-->
+            
+        <script src="scripts/blocks.js"></script>         
+    </body>
+    <footer>
+        <p>Created by <a href="https://buddylasta.com/" target="_blank">Buddylasta<a></p>
+        <p>Powered by <a href="https://github.com/Blockstream/esplora/blob/master/API.md" target="_blank">Blockstream API</a></p>
+    </footer>
+</html>
