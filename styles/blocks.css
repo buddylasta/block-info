@@ -1,0 +1,26 @@
+a {
+    color: black;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 6px 12px;
+    text-align: center;
+    font-style: bold;
+    font-size: 16px;
+    background-color: #f2a900;
+    display: inline-block;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f09401;
+}
+
+code {
+    background-color: rgb(227, 227, 227);
+}

@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="styles/blocks.css">
     </head>
     <body>
         <h2>Height of Last Block</h2> 
@@ -20,7 +20,7 @@
         <h2>Last Block Info</h2> 
         <p>Returns information about the last block mined</p>
 
-        <p> Available fields: id, height, version, timestamp, mediantime, bits, nonce, merkle_root, tx_count, size, weight, and previousblockhash</p>
+        <p> Available fields: <code>id, height, version, timestamp, mediantime, bits, nonce, merkle_root, tx_count, size, weight, and previousblockhash</code></p>
 
         <button id="lastBlockInfo" onclick="getBlockInfo(true)">Get Last Block Info</button>
 
@@ -30,7 +30,7 @@
         <h2>Specific Block Info</h2>
         <p>Returns information about a specific block mined</p>
 
-        <p> Available fields: id, height, version, timestamp, mediantime, bits, nonce, merkle_root, tx_count, size, weight, and previousblockhash</p>
+        <p> Available fields: <code>id, height, version, timestamp, mediantime, bits, nonce, merkle_root, tx_count, size, weight, and previousblockhash</code></p>
         <label for="blockHeight">Block Height:</label>
         <input type="text" id="blockHeight" placeholder="Block Height" maxlength="7">
 
