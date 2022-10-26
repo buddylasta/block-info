@@ -6,15 +6,46 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles/blocks.css">
+        <link rel="stylesheet" href="styles/index.css">
     </head>
     <body>
         <h2>Height of Last Block</h2> 
         <p>Returns the height of the last block</p>
+        <div class="scene">
+            <div class="cube">
+                <div class="cube__face cube__face--front" id="lastBlockHeight"></div>
+                <div class="cube__face cube__face--back"></div>
+                <div class="cube__face cube__face--right"></div>
+                <div class="cube__face cube__face--left"></div>
+                <div class="cube__face cube__face--top"></div>
+                <div class="cube__face cube__face--bottom"></div>
+            </div>
+        </div>
 
         <button id="lastHeightBtn" onclick="getLastBlockHeight()">Get Last Block Height</button>
 
-        <p class="block" id="lastHeightOut"></p>
+        <p class="radio-group">
+            <label>
+                <input type="radio" name="rotate-cube-side" value="front" checked /> front
+            </label>
+            <label>
+                <input type="radio" name="rotate-cube-side" value="right" /> right
+            </label>
+            <label>
+                <input type="radio" name="rotate-cube-side" value="back" /> back
+            </label>
+            <label>
+                <input type="radio" name="rotate-cube-side" value="left" /> left
+            </label>
+            <label>
+                <input type="radio" name="rotate-cube-side" value="top" /> top
+            </label>
+            <label>
+                <input type="radio" name="rotate-cube-side" value="bottom" /> bottom
+            </label>
+        </p>
+        <p>Spin it any way you want. The block height is etched into the timechain!</p>
+
         <hr>
 
         <h2>Last Block Info</h2> 
@@ -24,7 +55,7 @@
 
         <button id="lastBlockInfo" onclick="getBlockInfo(true)">Get Last Block Info</button>
 
-        <p id="lastBlockOutput"></p>
+        <pre id="lastBlockOutput"></pre>
         <hr>
 
         <h2>Specific Block Info</h2>
@@ -32,11 +63,11 @@
 
         <p> Available fields: <code>id, height, version, timestamp, mediantime, bits, nonce, merkle_root, tx_count, size, weight, and previousblockhash</code></p>
         <label for="blockHeight">Block Height:</label>
-        <input type="text" id="blockHeight" placeholder="Block Height" maxlength="7">
+        <input required type="text" id="blockHeight" placeholder="Block Height" maxlength="7">
 
         <button id="heightBtn" onclick="getBlockInfo(false)">Get Block Info</button>
 
-        <p id="specificBlockOutput"></p>
+        <pre id="specificBlockOutput"></pre>
         <hr>
 
 
@@ -60,7 +91,7 @@
 
         <button id="mempoolStats" onclick="getMempoolStats()">Get Mempool Stats</button>
 
-        <p id="mempoolOutput"></p>
+        <pre id="mempoolOutput"></pre>
         <hr>
 
         <h2>Fee Estimates</h2> 
@@ -77,7 +108,7 @@
         </p>
         <button id="feeEstimates" onclick="getFeeEstimates()">Get Fee Estimates</button>
 
-        <p id="feeEstimateOutput"></p>
+        <pre id="feeEstimateOutput"></pre>
         <hr>
 
         <h2> Clear Results </h2>
@@ -88,7 +119,8 @@
         <!-- Placing scripts at the bottom of the <body> element improves the display speed, because 
             script interpretation slows down the display.-->
             
-        <script src="scripts/blocks.js"></script>         
+        <script src="scripts/blocks.js"></script>  
+        <script src="scripts/interact.js"></script>
     </body>
     <footer>
         <p>Code in <a href="https://github.com/buddylasta/block-info" target="_blank">Github<a></p>
