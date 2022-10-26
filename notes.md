@@ -7,6 +7,7 @@
 
 ## To do
 - center everything
+- add favicon
 - add value to each face of cube
 - turn block info into table
 - style get mempool stats (turn into table and histogram?)
