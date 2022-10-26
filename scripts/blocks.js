@@ -22,8 +22,6 @@ const feeEstimateOutput = document.getElementById('feeEstimateOutput'); // Fee e
 async function getLastBlockHeight() {
     let response = await fetch(lastHeightUrl);
     data = await response.json();
-    console.log("this is data", data);
-    console.log("this is lasttHeightOut", lastHeightOut);
     lastHeightOut.innerHTML = data;
 }
 
