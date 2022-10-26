@@ -1,7 +1,7 @@
 // Last block constants
 const lastHeightUrl = 'https://blockstream.info/api/blocks/tip/height'; // Get last block height
 const lastHashUrl = 'https://blockstream.info/api/blocks/tip/hash'; // Get last block hash
-const lastHeightOut = document.getElementById('lastHeightOut'); // Last block height output ID
+const lastHeightOut = document.getElementById('lastBlockHeight'); // Last block height output ID
 const lastBlockOutput = document.getElementById('lastBlockOutput'); // Last block info output ID
 
 // Specific block constants
@@ -21,7 +21,7 @@ const feeEstimateOutput = document.getElementById('feeEstimateOutput'); // Fee e
 
 async function getLastBlockHeight() {
     let response = await fetch(lastHeightUrl);
-    let data = await response.json();
+    data = await response.json();
     lastHeightOut.innerHTML = data;
 }
 
@@ -29,12 +29,9 @@ async function getBlockHash(lastBlock) {
     if (lastBlock === true) {
         var respFetchHash = await fetch(lastHashUrl);
     } else {
-        console.log('this is block height', document.getElementById('blockHeight'))
         var respFetchHash = await fetch(blockHashUrl.replace(':height', document.getElementById('blockHeight').value));
     }
-    console.log('this is respFetchHash', respFetchHash);
     let data = await respFetchHash.text();
-    console.log('this is data', data);
     return data;
 }
 
@@ -42,16 +39,15 @@ async function getBlockInfo(lastBlock) {
     if (lastBlock === true) {
         let respGetHash = await getBlockHash(true);
         let response = await fetch(blockInfoUrl.replace(':hash', respGetHash));
-        console.log('this is response', response);
         let data = await response.json();
-        console.log('this is data', data);
         lastBlockOutput.innerHTML = JSON.stringify(data, null, 4);
     } else {
+        if (document.getElementById('blockHeight').value === "") {
+            return alert("Please enter a block height.");
+        }
         let respGetHash = await getBlockHash(false);
         let response = await fetch(blockInfoUrl.replace(':hash', respGetHash));
-        console.log('this is response', response);
         let data = await response.json();
-        console.log('this is data', data);
         specificBlockOutput.innerHTML = JSON.stringify(data, null, 4);
     }
 }
