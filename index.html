@@ -72,7 +72,8 @@
 
 
         <h2>Mempool Stats</h2> 
-        <p>Get mempool backlog statistics. Returns an object with:</p>
+        <p>Get mempool backlog statistics</p>
+        <p>Returns an object with:</p>
 
         <ul>
             <li>count: The number of transactions in the mempool</li>
@@ -80,14 +81,6 @@
             <li>total_fee: the total fee paid by mempool transactions in satoshis</li>
             <li>fee_histogram: mempool fee-rate distribution histogram</li>
         </ul>
-
-        <p hidden>
-            An array of (feerate, vsize) tuples, where each entry's vsize is the total
-            vsize of transactions paying more than feerate but less than the previous entry's 
-            feerate (except for the first entry, which has no upper bound). This matches the 
-            format used by the Electrum RPC protocol for mempool.get_fee_histogram.
-        </p>
-
 
         <button id="mempoolStats" onclick="getMempoolStats()">Get Mempool Stats</button>
 
@@ -111,9 +104,9 @@
         <pre id="feeEstimateOutput"></pre>
         <hr>
 
-        <h2> Clear Results </h2>
+        <!-- <h2> Clear Results </h2>
         <button id="clear" onclick="clearResults()">Clear</button> 
-        <hr>
+        <hr> */ -->
 
 
         <!-- Placing scripts at the bottom of the <body> element improves the display speed, because 

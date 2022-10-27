@@ -1,7 +1,7 @@
 // Last block constants
 const lastHeightUrl = 'https://blockstream.info/api/blocks/tip/height'; // Get last block height
 const lastHashUrl = 'https://blockstream.info/api/blocks/tip/hash'; // Get last block hash
-const lastHeightOut = document.getElementById('lastBlockHeight'); // Last block height output ID
+const lastHeightOut = document.querySelectorAll("div.cube__face"); // Last block height output ID
 const lastBlockOutput = document.getElementById('lastBlockOutput'); // Last block info output ID
 
 // Specific block constants
@@ -17,12 +17,13 @@ const mempoolOutput = document.getElementById('mempoolOutput'); // Mempool outpu
 const feeEstimateUrl = 'https://blockstream.info/api/fee-estimates'; // Get estimated feerate
 const feeEstimateOutput = document.getElementById('feeEstimateOutput'); // Fee estimate output ID
 
-
-
 async function getLastBlockHeight() {
     let response = await fetch(lastHeightUrl);
+    let n;
     data = await response.json();
-    lastHeightOut.innerHTML = data;
+    for (n = 0; n < lastHeightOut.length; ++n) {
+        lastHeightOut[n].innerHTML=data;
+    }
 }
 
 async function getBlockHash(lastBlock) {
@@ -64,10 +65,10 @@ async function getFeeEstimates() {
     feeEstimateOutput.innerHTML = JSON.stringify(data, null, 4);
 }
 
-function clearResults () {
-    lastHeightOut.innerHTML = "";
-    lastBlockOutput.innerHTML = "";
-    specificBlockOutput.innerHTML = "";
-    mempoolOutput.innerHTML = "";
-    feeEstimateOutput.innerHTML = "";
-}
+// function clearResults () {
+//     lastHeightOut.innerHTML = "";
+//     lastBlockOutput.innerHTML = "";
+//     specificBlockOutput.innerHTML = "";
+//     mempoolOutput.innerHTML = "";
+//     feeEstimateOutput.innerHTML = "";
+// }

@@ -1,5 +1,7 @@
 * { 
   box-sizing: border-box; 
+  text-align: center;
+  max-width: 100%;
 }
 
 body { 
@@ -29,15 +31,34 @@ button:hover {
     background-color: #f09401;
 }
 
+li {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  list-style-type: circle;
+}
+
+pre {
+  display: flex;
+  justify-content: center;
+  text-align: justify;
+}
+
 code {
     background-color: rgb(227, 227, 227);
+}
+
+hr {
+  max-width: 80%;
 }
 
 .scene {
   width: 200px;
   height: 200px;
   border: 1px solid #CCC;
-  margin: 80px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   perspective: 400px;
 }
 
