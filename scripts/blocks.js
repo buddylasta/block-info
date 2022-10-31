@@ -56,6 +56,38 @@ async function getBlockInfo(lastBlock) {
 async function getMempoolStats() {
     let response = await fetch(mempoolUrl);
     let data = await response.json();
+    let hist = data.fee_histogram;
+
+    const keys = [];
+    const values = [];
+    for (let i = 0; i < hist.length; i++) {
+        keys.push(hist[i][0]);
+        values.push(hist[i][1]);
+    }
+
+    // Define hist data
+    var histData = [
+        {
+            type: "bar",
+            x: keys,
+            y: values,
+            color: '#f2a900',
+            marker: {
+                color: '#f2a900',
+                line: {
+                    width: 5
+                }
+            }
+        }
+    ]
+
+    // Define Layout
+    var layout = {
+        xaxis: {title: "Fee-rate (sat/vB)"},
+        yaxis: {title: "Vzsize (vB)"},
+        title: "Mempool Fee-rate Distribution"
+    };
+    Plotly.plot('mempoolChart', histData, layout);
     mempoolOutput.innerHTML = JSON.stringify(data, null, 4);
 }
 

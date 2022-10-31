@@ -7,10 +7,11 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/index.css">
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
     <body>
         <h2>Height of Last Block</h2> 
-        <p>Returns the height of the last block</p>
+        <p>Returns the <a href="https://youtu.be/Uv27DCEHaIA?t=791">height</a> of the last block</p>
         <div class="scene">
             <div class="cube">
                 <div class="cube__face cube__face--front" id="lastBlockHeight"></div>
@@ -55,7 +56,7 @@
 
         <button id="lastBlockInfo" onclick="getBlockInfo(true)">Get Last Block Info</button>
 
-        <pre id="lastBlockOutput"></pre>
+        <pre class="blockOutput" id="lastBlockOutput"></pre>
         <hr>
 
         <h2>Specific Block Info</h2>
@@ -67,13 +68,12 @@
 
         <button id="heightBtn" onclick="getBlockInfo(false)">Get Block Info</button>
 
-        <pre id="specificBlockOutput"></pre>
+        <pre class="blockOutput" id="specificBlockOutput"></pre>
         <hr>
 
 
         <h2>Mempool Stats</h2> 
-        <p>Get mempool backlog statistics</p>
-        <p>Returns an object with:</p>
+        <p>Get mempool backlog statistics. Returns an object with:</p>
 
         <ul>
             <li>count: The number of transactions in the mempool</li>
@@ -82,9 +82,29 @@
             <li>fee_histogram: mempool fee-rate distribution histogram</li>
         </ul>
 
-        <button id="mempoolStats" onclick="getMempoolStats()">Get Mempool Stats</button>
+        <p>Fee Histogram: An array of (feerate, vsize) tuples, where each entry's vsize is the total vsize of transactions paying more than feerate but less than the previous entry's feerate (except for the first entry, which has no upper bound)</p>
 
+        <p>Example output:</p>
+        <pre class="mempoolStats">
+            <code>
+            {
+                "count": 8134,
+                "vsize": 3444604,
+                "total_fee":29204625,
+                "fee_histogram": [[53.01, 102131], [38.56, 110990], [34.12, 138976], [24.34, 112619], [3.16, 246346], [2.92, 239701], [1.1, 775272]]
+            }
+            </code>
+        </pre>
+
+        <p>
+            In this example, there are transactions weighting a total of 102131 vbytes that are paying more than 53 sat/vB, 110990 vbytes of
+            transactions paying between 38 and 53 sat/vB, 138,976 vbytes paying between 34 and 38, etc.
+        </p>
+
+
+        <button id="mempoolStats" onclick="getMempoolStats()">Get Mempool Stats</button>
         <pre id="mempoolOutput"></pre>
+        <pre id="mempoolChart" class="mempoolChart"></pre>
         <hr>
 
         <h2>Fee Estimates</h2> 
@@ -106,7 +126,7 @@
 
         <!-- <h2> Clear Results </h2>
         <button id="clear" onclick="clearResults()">Clear</button> 
-        <hr> */ -->
+        <hr> -->
 
 
         <!-- Placing scripts at the bottom of the <body> element improves the display speed, because 

@@ -1,10 +1,14 @@
 * { 
   box-sizing: border-box; 
-  text-align: center;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body { 
   font-family: sans-serif; 
+  text-align: center;
 }
 
 a {
@@ -12,18 +16,17 @@ a {
 }
 
 button {
-    border: none;
-    border-radius: 30px;
-    color: white;
-    padding: 6px 12px;
-    text-align: center;
-    font-style: bold;
-    font-size: 16px;
-    background-color: #f2a900;
-    display: inline-block;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 6px 12px;
+  font-style: bold;
+  font-size: 16px;
+  background-color: #f2a900;
+  display: inline-block;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
 
 button:hover {
@@ -40,7 +43,9 @@ li {
 pre {
   display: flex;
   justify-content: center;
-  text-align: justify;
+  text-align: left;
+  white-space: pre-wrap; /* make long lines wrap to make content fit*/
+  overflow-wrap: break-word; /* prevent long strings without spaces from overflowing */
 }
 
 code {
@@ -48,7 +53,8 @@ code {
 }
 
 hr {
-  max-width: 50%;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .scene {
